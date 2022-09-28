@@ -1,0 +1,172 @@
+1017457@U110110:~$ python3
+Python 3.10.4 (main, Jun 29 2022, 12:14:53) [GCC 11.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> nombre = 'Judith'
+>>> nombre
+'Judith'
+>>> 
+1017457@U110110:~/Downloads$ python3 intro_lab.py esto son cuatro parametros
+['intro_lab.py', 'esto', 'son', 'cuatro', 'parametros']
+1017457@U110110:~/Downloads$ ls -l
+total 16
+-rw-r--r-- 1 1017457 dif  211 sep 19 12:40 '1017457@U110110:~$ python3'
+-rw-r--r-- 1 1017457 dif   78 jul 28 18:01  intro_lab.py
+-rw-r--r-- 1 1017457 dif  220 sep 19 12:07  intro_lab.tar.gz
+-rw-r--r-- 1 1017457 dif 2048 sep 19 12:07  intro_lab.tar.gz.uncompressed
+1017457@U110110:~/Downloads$ chmod u+x intro_lab.py
+1017457@U110110:~/Downloads$ ls
+'1017457@U110110:~$ python3'   intro_lab.py   intro_lab.tar.gz   intro_lab.tar.gz.uncompressed
+1017457@U110110:~/Downloads$ ls -l
+total 16
+-rw-r--r-- 1 1017457 dif  211 sep 19 12:40 '1017457@U110110:~$ python3'
+-rwxr--r-- 1 1017457 dif   78 jul 28 18:01  intro_lab.py
+-rw-r--r-- 1 1017457 dif  220 sep 19 12:07  intro_lab.tar.gz
+-rw-r--r-- 1 1017457 dif 2048 sep 19 12:07  intro_lab.tar.gz.uncompressed
+1017457@U110110:~/Downloads$ ./intro_lab.py
+1017457@U110110:~/Downloads$ python3
+Python 3.10.4 (main, Jun 29 2022, 12:14:53) [GCC 11.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 7+3
+10
+>>> 7==5
+False
+>>> 7 in [3,25,7,11]
+True
+>>> x = 7
+>>> print(x)
+7
+>>> x
+7
+>>> x > 10
+False
+>>> x = 'saludos'
+>>> len(x)
+7
+>>> x.lower()
+'saludos'
+>>> exit()
+1017457@U110110:~/Downloads$ python3
+>>> b'una cadena de bytes'
+b'una cadena de bytes'
+>>> b'\x61\x62\x63\x64'
+b'abcd'
+>>> b'\x61\x62\xf0\x64'
+b'ab\xf0d'
+>>> x = b'\x61\x62\xf0\x64'
+>>> x
+b'ab\xf0d'
+>>> x.hex()
+'6162f064'
+>>> x.hex(' ')
+'61 62 f0 64'
+>>> x.hex(':')
+'61:62:f0:64'
+>>> x = bytes.fromhex('61 62 f0 64')
+>>> x = bytes.fromhex('6162f064')
+>>> x = 'Python'.encode('ascii')
+>>> x
+b'Python'
+>>> x.hex(' ')
+'50 79 74 68 6f 6e'
+>>> x.decode('ascii')
+'Python'
+>>> x = 'Iñaki'.encode('ascii')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+UnicodeEncodeError: 'ascii' codec can't encode character '\xf1' in position 1: ordinal not in range(128)
+>>> x = 'Iñaki'.encode('latin1')
+>>> x
+b'I\xf1aki'
+>>> x.hex(' ')
+'49 f1 61 6b 69'
+>>> len(x)
+5
+>>> x.decode('latin1')
+'Iñaki'
+>>> x[2:].decode('ascii')
+'aki'
+>>> x = 'Iñaki'.encode()
+>>> x
+b'I\xc3\xb1aki'
+>>> x.hex(' ')
+'49 c3 b1 61 6b 69'
+>>> len(x)
+6
+>>> x.decode()
+'Iñaki'
+>>> x[1:].decode()
+'ñaki'
+>>> x[2:].decode() 
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb1 in position 0: invalid start byte
+>>> x = b'\x61\x00'
+>>> x
+b'a\x00'
+>>> i = int.from_bytes(x, byteorder='big')
+>>> i
+24832
+>>> x = b'\x61\x00'
+>>> x
+b'a\x00'
+>>> i = int.from_bytes(x, byteorder='little')
+>>> i
+97
+>>> i.to_bytes(2, 'big').hex(' ')
+'00 61'
+>>> i.to_bytes(4, 'big').hex(' ')
+'00 00 00 61'
+>>> i.to_bytes(2, 'little').hex(' ')
+'61 00'
+>>> 5.to_bytes(2, 'big')
+  File "<stdin>", line 1
+    5.to_bytes(2, 'big')
+     ^
+SyntaxError: invalid decimal literal
+>>> (5).to_bytes(2, 'big')
+b'\x00\x05'
+>>> (5).to_bytes(2, 'big') == bytes.fromhex('00 05')
+True
+>>> x = bytes.fromhex('00 05 15')
+>>> x[1:]
+b'\x05\x15'
+>>> x[1:].hex(' ')
+'05 15'
+>>> x[1]
+5
+>>> x[1:2]
+b'\x05'
+>>> bin(5)
+'0b101'
+>>> format(5, '#b')
+'0b101'
+>>> format(5, 'b')
+'101'
+>>> format(5, 'b').zfill(8)
+'00000101'
+>>> format(5, 'b').zfill(16)
+'0000000000000101'
+>>> import random
+>>> i = random.randint(0,255)
+>>> format(i, 'b').zfill(8)[2]
+'1'
+>>> i & (1 << 5)
+32
+>>> i1 = random.randint(0,255)
+>>> i2 = random.randint(0,255)
+>>> i1
+21
+>>> i2
+33
+>>> i12 = format(i1, 'b').zfill(8) + format(i2, 'b').zfill(8)
+>>> i12
+'0001010100100001'
+>>> int(i12, 2)
+5409
+>>> (i1 << 8) | i2
+5409
+>>> import socket
+>>> socket.inet_aton('158.227.0.65')
+b'\x9e\xe3\x00A'
+>>> socket.inet_ntoa(b'\x9e\xe3\x00\x41')
+'158.227.0.65'
