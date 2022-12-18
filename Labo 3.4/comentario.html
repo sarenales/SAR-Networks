@@ -1,0 +1,85 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Sitio Web SAR</title>
+    <script src="scripts/libro_visitas.js"></script>
+</head>
+<link href="css/main.css" rel="stylesheet">
+<a href="lista_coment.php">Libro de Visitas</a>
+
+<body>
+<div id="content">
+    <!-- Logo Facultad de Informática -->
+    <div id="banner"> 
+    <img class="hr" id="logo" src="img/fakultatea.jpg" alt="Fachada exterior de la Facultad de Informatica">
+    </div>    
+
+
+
+    <!-- Menú de navegación -->
+    <ul id="menu">
+        
+        <li><a href="index.html">Inicio</a>
+                
+        </li>
+
+ <div id="activeMenu">   
+        <li>Enviar Comentario
+    
+        </li>
+ </div>
+
+ <li><!-- Link a Libro de Visita --><a href="lista_coment.php">Libro de Visitas</a>
+
+        </li>
+ </ul>
+    
+      <!-- Contenido -->
+    <div id="main">
+        <div class="heading">
+          <div class="form">
+                <br>
+                   <br>
+                        <br>  
+                            <form action="nuevo_coment.php" method="post" novalidate>
+                            <fieldset> 
+
+
+                                <label class="label" for="name">Nombre *:</label>
+                                <input id="name" name="nombre" type="text" maxlength="20" required/>
+                                <br><br>
+                                
+
+                                <label class="label" for="email">Direcci&oacute;n correo electr&oacute;nico:</label>
+                                <input id="email" name="email" type="email"/>
+                                <br><br>
+
+                                
+                                <input type="checkbox" name="privado" id="private">
+                                <label class="label" for="private">No quiero publicar mi direcci&oacute;n de correo electr&oacute;nico</label>
+                                
+                                <br><br>
+                                
+                                <label class="label" for="message"> Comentario *:</label>
+                                <textarea id="message" name="comentario" maxlength="140" rows="5" required></textarea>
+
+                                <br>
+                                <br> <span class="label">Los campos marcados con el s&iacute;mbolo * son obligatorios</span><br><br>
+                            
+                                <button class="button" type="submit" onclick="return ValidaForm(this.form)">Enviar</button></fieldset>
+                                
+
+                            </fieldset>     
+                            </form> 
+        </div>
+        </div>
+        
+        <img class="hr" src="img/line_gradient.gif">
+            Asignatura SAR. Grado en Ingeniería Informática. UPV-EHU
+    </div>
+</div> <!-- content -->
+</body>
+</html>
